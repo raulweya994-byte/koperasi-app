@@ -1,0 +1,36 @@
+<?php
+
+namespace App\Http\Controllers\Petugas;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+class SettingController extends Controller
+{
+    public function index()
+    {
+        $user = Auth::user();
+        
+        // Get current theme settings from user preferences or default
+        $currentTheme = $user->theme_preference ?? 'default';
+        $currentNavbarTheme = $user->navbar_theme ?? 'dark-blue';
+        
+        return view('petugas.settings.index', compact('currentTheme', 'currentNavbarTheme'));
+    }
+    
+    public function updateTheme(Request $request)
+    {
+        $request->validate([
+            'theme' => 'required|in:default,blue,green,purple,orange,red',
+            'navbar_theme' => 'required|in:dark-blue,navy,teal,purple,dark-gray,green'
+        ]);
+        
+        $user = Auth::user();
+        $user->theme_preference = $request->theme;
+        $user->navbar_theme = $request->navbar_theme;
+        $user->save();
+        
+        return back()->with('success', 'Tema dashboard dan navbar berhasil diubah!');
+    }
+}

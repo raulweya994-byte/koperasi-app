@@ -1,0 +1,24 @@
+@extends('layouts.app')
+@section('title', 'Tambah Anggota Koperasi')
+
+@push('styles')
+<style>
+.page-header {
+    background: linear-gradient(135deg, #1a3a6e 0%, #2d5aa0 50%, #4a7bc8 100%);
+    padding: 50px 0;
+    margin-bottom: 30px;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 4px 20px rgba(26, 58, 110, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+</style>
+@endpush
+
+@section('content')
+<div class="page-header">
+    <div class="container text-center text-white">
+        <h1 class="mb-3">Tambah Anggota Koperasi Baru</h1>
+    </div>
+</div>
+@endsection
