@@ -20,3 +20,6 @@ yarn-error.log
 DISPERINDAGKOP_Tolikara/
 backup_*.sql
 *.sql
+.DS_Store
+*.bak
+*.bak2
