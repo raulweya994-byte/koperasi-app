@@ -46,7 +46,7 @@
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
         gap: 40px;
-        max-width: 1000px;
+        max-width: 500px;
         margin: 0 auto;
     }
     .choice-card {
@@ -404,30 +404,9 @@
                 </form>
             </div>
 
-            {{-- Register Card --}}
-            <div class="choice-card register">
-                <div class="choice-icon">
-                    <i class="fas fa-user-plus"></i>
-                </div>
-                <h2 class="choice-title">Belum Punya Akun?</h2>
-                <p class="choice-description">
-                    Daftar sebagai anggota baru dan dapatkan berbagai keuntungan dari koperasi kami
-                </p>
-                <ul class="choice-features list-unstyled">
-                    <li><i class="fas fa-check-circle"></i> Proses pendaftaran mudah</li>
-                    <li><i class="fas fa-check-circle"></i> Akun otomatis dibuat</li>
-                    <li><i class="fas fa-check-circle"></i> Akses layanan koperasi</li>
-                    <li><i class="fas fa-check-circle"></i> Dapatkan nomor anggota</li>
-                </ul>
-                <a href="{{ route('pendaftaran.form') }}" class="btn btn-choice register">
-                    <i class="fas fa-user-plus mr-2"></i>Daftar Sekarang
-                </a>
-                <div class="text-center mt-3">
-                    <small style="color:#64748b">
-                        <i class="fas fa-clock mr-1"></i>Gratis & cepat, hanya 5 menit
-                    </small>
-                </div>
-            </div>
+            
+
+            
         </div>
     </div>
 </section>
