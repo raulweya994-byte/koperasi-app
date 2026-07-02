@@ -167,6 +167,13 @@
 
             {{-- Auth Section --}}
             <div class="navbar-nav ml-auto d-flex align-items-center" style="gap: 14px; padding-left: 20px;">
+                {{-- Search Box Publik --}}
+                <form action="/public/search" method="GET" class="d-flex align-items-center" style="background:rgba(255,255,255,0.15);border-radius:10px;padding:6px 12px;gap:8px;">
+                    <input type="text" name="q" placeholder="Cari..." value="{{ request('q') }}" style="background:transparent;border:none;outline:none;color:#fff;font-size:13px;width:140px;" />
+                    <button type="submit" style="background:transparent;border:none;color:#fff;cursor:pointer;padding:0;">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
                 {{-- Tombol Login selalu tampil, baik user sudah login atau belum --}}
                 <a href="{{ route('login') }}" class="btn btn-login" style="padding: 11px 22px; background: linear-gradient(135deg, {{ theme_color('warning') }}, #fdb944); border-radius: 10px; font-size: 14px; font-weight: 700; color: #0d2240; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 15px rgba(245,166,35,0.35); text-decoration: none; transition: all 0.2s; white-space: nowrap;">
                     <i class="fas fa-sign-in-alt" style="font-size: 15px;"></i>

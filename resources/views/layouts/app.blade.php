@@ -1025,6 +1025,26 @@
                     <span>Kabupaten Tolikara, Papua Pegunungan</span>
                 </div>
             </li>
+            <li class="nav-item d-none d-md-inline-block">
+                @php
+                    $searchAction = '/admin/search';
+                    $searchPlaceholder = 'Cari koperasi, anggota...';
+                    if(auth()->user()->isPetugas()) {
+                        $searchAction = '/petugas/search';
+                        $searchPlaceholder = 'Cari anggota, jadwal...';
+                    } elseif(auth()->user()->isPimpinan()) {
+                        $searchAction = '/pimpinan/search';
+                        $searchPlaceholder = 'Cari laporan, koperasi...';
+                    } elseif(auth()->user()->isKoperasi()) {
+                        $searchAction = '/koperasi-portal/search';
+                        $searchPlaceholder = 'Cari bantuan, jadwal...';
+                    }
+                @endphp
+                <form action="{{ $searchAction }}" method="GET" class="search-box">
+                    <input type="text" name="q" placeholder="{{ $searchPlaceholder }}" value="{{ request('q') }}">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </form>
+            </li>
         </ul>
 
         <!-- Bagian Kanan: Notifikasi, Pesan, & User Profile -->

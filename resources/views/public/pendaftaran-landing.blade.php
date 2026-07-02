@@ -350,7 +350,6 @@
 <section class="choice-section">
     <div class="container">
         <div class="choice-container">
-            {{-- Login Card --}}
             <div class="choice-card login">
                 <div class="choice-icon">
                     <i class="fas fa-sign-in-alt"></i>
@@ -403,9 +402,6 @@
                     </button>
                 </form>
             </div>
-
-            
-
             
         </div>
     </div>
@@ -501,7 +497,7 @@
                             <div style="flex:1">
                                 <div class="d-flex align-items-center gap-2 mb-2" style="flex-wrap:wrap">
                                     @if($item->jenis)
-                                    <span style="background:linear-gradient(135deg,{{ $item->jenis === 'urgent' ? '#f43f5e,#dc2626' : ($item->jenis === 'penting' ? '#f59e0b,#d97706' : '#667eea,#764ba2') }});color:#fff;padding:4px 12px;border-radius:12px;font-size:11px;font-weight:700;letter-spacing:0.3px{{ $item->jenis === 'urgent' ? ';animation:pulse 2s infinite' : '' }}">
+                                    <span steeyle="background:linear-gradient(135deg,{{ $item->jenis === 'urgent' ? '#f43f5e,#dc2626' : ($item->jenis === 'penting' ? '#f59e0b,#d97706' : '#667eea,#764ba2') }});color:#fff;padding:4px 12px;border-radius:12px;font-size:11px;font-weight:700;letter-spacing:0.3px{{ $item->jenis === 'urgent' ? ';animation:pulse 2s infinite' : '' }}">
                                         <i class="fas fa-{{ $item->jenis === 'urgent' ? 'exclamation-triangle' : ($item->jenis === 'penting' ? 'exclamation-circle' : 'info-circle') }} mr-1"></i>{{ strtoupper($item->jenis) }}
                                     </span>
                                     @endif

@@ -84,8 +84,8 @@ Route::get("/pendaftaran-anggota/success", [PendaftaranAnggotaController::class,
 Route::middleware("guest")->group(function () {
     Route::get("/login", [LoginController::class, "showLoginForm"])->name("login");
     Route::post("/login", [LoginController::class, "login"])->name("login.post");
-    // Route::get("/register", [LoginController::class, "showRegisterForm"])->name("register");
-    // Route::post("/register", [LoginController::class, "register"])->name("register.post");
+    Route::get("/register", [LoginController::class, "showRegisterForm"])->name("register");
+    Route::post("/register", [LoginController::class, "register"])->name("register.post");
     Route::get("/forgot-password", [LoginController::class, "showForgotForm"])->name("password.request");
     Route::post("/forgot-password", [LoginController::class, "sendResetLink"])->name("password.email");
     Route::get("/reset-password/{token}", [LoginController::class, "showResetForm"])->name("password.reset");
@@ -202,6 +202,7 @@ Route::prefix("admin")->middleware(["auth","role:admin"])->name("admin.")->group
     Route::resource("periode-pendaftaran", PeriodePendaftaranController::class);
     Route::post("/periode-pendaftaran/{periodePendaftaran}/toggle", [PeriodePendaftaranController::class, "toggleStatus"])->name("periode-pendaftaran.toggle");
     
+    Route::get("/search", [\App\Http\Controllers\Admin\SearchController::class, "index"])->name("admin.search");
     Route::get("/activity-log", [AdminUser::class, "activityLog"])->name("users.activityLog");
     Route::get("/activity-log/{id}", [AdminUser::class, "activityLogDetail"])->name("users.activityLog.detail");
     Route::delete("/activity-log/{id}", [AdminUser::class, "activityLogDestroy"])->name("users.activityLog.destroy");
@@ -364,6 +365,7 @@ Route::prefix("petugas")->middleware(["auth","role:petugas"])->name("petugas.")-
     Route::post("/halaman-statis/{halamanStatis}/toggle-status", [\App\Http\Controllers\Petugas\HalamanStatisController::class, "toggleStatus"])->name("halaman-statis.toggleStatus");
     
     // Activity Log Routes
+    Route::get("/search", [\App\Http\Controllers\Petugas\SearchController::class, "index"])->name("petugas.search");
     Route::get("/activity-log", [\App\Http\Controllers\Petugas\ActivityLogController::class, "index"])->name("activity-log.index");
     Route::get("/activity-log/{id}", [\App\Http\Controllers\Petugas\ActivityLogController::class, "show"])->name("activity-log.show");
     Route::delete("/activity-log/{id}", [\App\Http\Controllers\Petugas\ActivityLogController::class, "destroy"])->name("activity-log.destroy");
@@ -410,6 +412,7 @@ Route::prefix("pimpinan")->middleware(["auth","role:pimpinan"])->name("pimpinan.
     Route::get("/laporan/export-pdf", [PimpinanLaporan::class, "exportPdf"])->name("laporan.exportPdf");
     Route::get("/laporan/export-excel", [PimpinanLaporan::class, "exportExcel"])->name("laporan.exportExcel");
     Route::get("/jadwal", [\App\Http\Controllers\Pimpinan\DashboardController::class, "jadwal"])->name("jadwal.index");
+    Route::get("/search", [\App\Http\Controllers\Pimpinan\SearchController::class, "index"])->name("pimpinan.search");
     Route::get("/activity-log", [PimpinanDashboard::class, "activityLog"])->name("activity.log");
     Route::get("/activity-log/{id}/detail", [PimpinanDashboard::class, "activityLogDetail"])->name("activity.log.detail");
     Route::delete("/activity-log/{id}", [PimpinanDashboard::class, "activityLogDelete"])->name("activity.log.delete");
@@ -443,6 +446,7 @@ Route::middleware(["auth","role:koperasi"])->prefix("koperasi-portal")->name("ko
     Route::get("/jadwal", [KoperasiBantuan::class, "jadwal"])->name("bantuan.jadwal");
     Route::get("/pengajuan-bantuan", [KoperasiBantuan::class, "pengajuan"])->name("bantuan.pengajuan");
     Route::post("/pengajuan-bantuan", [KoperasiBantuan::class, "pengajuanStore"])->name("bantuan.pengajuan.store");
+    Route::get("/search", [\App\Http\Controllers\Koperasi\SearchController::class, "index"])->name("koperasi.search");
     Route::get("/notifikasi", [KoperasiDashboard::class, "notifikasi"])->name("notifikasi");
     Route::post("/notifikasi/{notifikasi}/read", [KoperasiDashboard::class, "readNotifikasi"])->name("notifikasi.read");
     Route::get("/chat", [\App\Http\Controllers\Koperasi\ChatController::class, "index"])->name("chat.index");
@@ -461,7 +465,8 @@ Route::middleware(['auth','role:anggota'])->prefix('anggota-portal')->name('angg
     Route::get('/profil', [App\Http\Controllers\Anggota\PortalAnggotaController::class, 'profil'])->name('profil');
     Route::put('/profil', [App\Http\Controllers\Anggota\PortalAnggotaController::class, 'profilUpdate'])->name('profil.update');
     Route::get('/pengumuman', [App\Http\Controllers\Anggota\PortalAnggotaController::class, 'pengumuman'])->name('pengumuman');
-    Route::get('/jadwal', [App\Http\Controllers\Anggota\PortalAnggotaController::class, 'jadwal'])->name('jadwal');
+    Route::get('/search', [App\Http\Controllers\PublicSearchController::class, 'index'])->name('public.search');
+Route::get('/jadwal', [App\Http\Controllers\Anggota\PortalAnggotaController::class, 'jadwal'])->name('jadwal');
     Route::get('/jadwal/{id}/detail', [App\Http\Controllers\Anggota\PortalAnggotaController::class, 'jadwalDetail'])->name('jadwal.detail');
     
     // Kebutuhan Bantuan

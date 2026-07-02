@@ -29,7 +29,18 @@ class BantuanController extends Controller
     }
     
     public function jadwal() {
-        $jadwal = JadwalDistribusi::where('status','terjadwal')->latest()->paginate(10);
+        $koperasi = \App\Models\Koperasi::where('user_id', auth()->id())->first();
+        $jadwal = \App\Models\Jadwal::whereIn('status',['dijadwalkan','berlangsung'])
+            ->where(function($q) use ($koperasi) {
+                $q->where('is_publik', true);
+                if ($koperasi) {
+                    $q->orWhereHas('koperasiList', function($q2) use ($koperasi) {
+                        $q2->where('koperasi_id', $koperasi->id);
+                    });
+                }
+            })
+            ->latest('tanggal')
+            ->paginate(10);
         return view('koperasi.bantuan.jadwal', compact('jadwal'));
     }
     

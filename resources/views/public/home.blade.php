@@ -639,7 +639,7 @@ body {
 }
 .btn-main:hover { background: #15306a; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(26,58,110,.32); text-decoration: none; }
 
-/* ── RESPONSIVE ────────────────────────────────── */
+── RESPONSIVE ──────────────────────────────────
 @media(max-width:992px){ .hero h1 { font-size: 2.4rem; } }
 @media(max-width:768px){
     .hero { padding: 90px 0 64px; min-height: auto; }
@@ -650,6 +650,25 @@ body {
     .cta-wrap h2 { font-size: 1.85rem; }
     .btn-hero-secondary { margin-left: 0; margin-top: 10px; }
     .stat-item { border-right: none; border-bottom: 1px solid #f0f2f7; }
+    .layanan-item { padding: 24px 20px; }
+    .hero-info-card { padding: 24px 20px; }
+    .cta-wrap { padding: 60px 0; }
+    .btn-cta { padding: 14px 30px; font-size: 14px; }
+    .btn-main { padding: 12px 28px; font-size: 14px; }
+}
+@media(max-width:480px){
+    .hero { padding: 80px 0 50px; }
+    .hero h1 { font-size: 1.7rem; }
+    .hero-desc { font-size: 0.95rem; }
+    .hero-eyebrow { font-size: 10px; padding: 6px 14px; }
+    .btn-hero-primary { padding: 12px 22px; font-size: 13px; }
+    .btn-hero-secondary { padding: 12px 22px; font-size: 13px; margin-top: 8px; }
+    .stat-num { font-size: 1.6rem !important; }
+    .stat-label { font-size: 11px !important; }
+    .section-title h2 { font-size: 1.5rem; }
+    .cta-wrap h2 { font-size: 1.5rem; }
+    .cta-wrap p { font-size: 0.95rem; }
+    .hero-stat-cell strong { font-size: 1.6rem; }
 }
 </style>
 
